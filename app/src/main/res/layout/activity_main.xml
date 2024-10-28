@@ -8,8 +8,32 @@
     tools:context=".MainActivity">
 
     <TextView
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:id="@+id/textView2"
+        android:layout_width="209dp"
+        android:layout_height="100dp"
+        android:text="@string/viajes"
+        android:textAlignment="center"
+        android:textColor="#82C30D"
+        android:textSize="60sp"
+        tools:layout_editor_absoluteX="101dp"
+        tools:layout_editor_absoluteY="49dp"
+        tools:ignore="MissingConstraints" />
 
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="217dp"
+        android:layout_height="74dp"
+        android:text="@string/crear_nuevo_viaje"
+        tools:layout_editor_absoluteX="101dp"
+        tools:layout_editor_absoluteY="301dp"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="217dp"
+        android:layout_height="74dp"
+        android:text="@string/detalles_de_los_viajes"
+        tools:layout_editor_absoluteX="101dp"
+        tools:layout_editor_absoluteY="408dp"
+        tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>
