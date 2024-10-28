@@ -1,6 +1,3 @@
 <resources>
     <string name="app_name">MyAplicacionDeViajes</string>
-    <string name="detalles_de_los_viajes">Detalles de los viajes</string>
-    <string name="crear_nuevo_viaje">Crear Nuevo Viaje</string>
-    <string name="viajes">Viajes</string>
 </resources>
