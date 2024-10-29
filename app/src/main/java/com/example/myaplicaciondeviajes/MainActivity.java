@@ -22,13 +22,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
         Button createViajeButon= findViewById(R.id.button3);
+        Button detallesViajes= findViewById(R.id.button4);
         createViajeButon.setOnClickListener(this);
+        detallesViajes.setOnClickListener(this);
     }
 
 
     @Override
     public void onClick(View view) {
         Intent intent = new Intent (MainActivity.this, CrearNuevoViaje.class);
-        //startActivities(intent);
+        startActivity(intent);
+
+        Intent intent2 = new Intent (MainActivity.this, CrearNuevoViaje.class);
+        startActivity(intent2);
+
     }
 }

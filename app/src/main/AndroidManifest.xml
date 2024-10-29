@@ -13,8 +13,11 @@
         android:theme="@style/Theme.MyAplicacionDeViajes"
         tools:targetApi="31">
         <activity
-            android:name="com.example.myaplicaciondeviajes.CrearNuevoViaje"
+            android:name=".DetallesViajes"
             android:exported="false" />
+        <activity
+            android:name=".CrearNuevoViaje"
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
