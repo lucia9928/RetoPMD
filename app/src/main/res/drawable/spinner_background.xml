@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/drawable/spinner_background.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#FFFFFF" /> <!-- Fondo blanco -->
+    <corners android:radius="16dp" /> <!-- Bordes redondeados de 16dp -->
+    <stroke android:width="2dp" android:color="#CCCCCC" /> <!-- Borde opcional en gris claro -->
+</shape>

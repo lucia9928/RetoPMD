@@ -3,4 +3,20 @@
     <string name="viajes">Viajes</string>
     <string name="crear_nuevo_viaje">Crear nuevo Viaje</string>
     <string name="detalles_de_los_viajes">Detalles de los viajes</string>
+    <string name="duracion_del_viaje">Duracion del viaje</string>
+    <string name="nombre_del_viaje">Nombre del viaje</string>
+    <string name="crear_nuevo_viaje2">Crear Nuevo Viaje</string>
+    <string name="guardar">Guardar</string>
+    <string name="agregar_audios">Agregar Audios</string>
+    <string name="agregar_videos">Agregar Videos</string>
+    <string name="agregar_imagenes">Agregar Imagenes</string>
+    <string name="audios">Audios</string>
+    <string name="videos">Videos</string>
+    <string name="atras">Atras</string>
+    <string name="imgenes">Imgenes</string>
+    <string name="titulo">Detalles de los viajes</string>
+    <string name="nombre">Nombre del viaje</string>
+    <string name="duracion">Duracion del viaje</string>
+    <string name="lista_de_viajes">Lista de viajes</string>
+    <string name="delete_trip">delete_trip</string>
 </resources>

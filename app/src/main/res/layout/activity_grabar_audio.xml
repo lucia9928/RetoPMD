@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:background="@drawable/background_gradient"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.myaplicaciondeviajes.GrabarAudioActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp"
+        android:background="@drawable/background_gradient">
+
+        <!-- Título -->
+        <TextView
+            android:id="@+id/title"
+            style="@style/TitleTextStyle"
+            android:layout_width="244dp"
+            android:layout_height="89dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:text="Grabadora de Voz"
+            android:textSize="34sp" />
+
+        <TextView
+            android:id="@+id/timerText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00:00:00"
+            android:textSize="48sp"
+            android:textColor="#333"
+            android:layout_centerInParent="true" />
+
+        <!-- Botones de control -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_below="@id/timerText"
+            android:layout_marginTop="40dp"
+            android:layout_centerHorizontal="true">
+
+            <!-- Botón de detener -->
+
+            <!-- Botón de grabar -->
+            <ImageButton
+                android:id="@+id/stopButton"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="10dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:backgroundTint="#E0E0E0"
+                android:contentDescription="Detener grabación"
+                android:src="@drawable/pause" />
+
+            <ImageButton
+                android:id="@+id/recordButton"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/recording"
+                android:backgroundTint="#FF0000"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Iniciar grabación"
+                android:layout_margin="10dp"/>
+
+            <!-- Botón de reproducir -->
+            <ImageButton
+                android:id="@+id/playButton"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/play"
+                android:backgroundTint="#E0E0E0"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Reproducir grabación"
+                android:layout_margin="10dp"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

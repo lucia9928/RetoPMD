@@ -5,6 +5,101 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_gradient"
     tools:context="com.example.myaplicaciondeviajes.CrearNuevoViaje">
+
+    <!-- Título -->
+    <TextView
+        android:id="@+id/texNuevoViaje"
+        style="@style/TitleTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/crear_nuevo_viaje2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="40dp" />
+
+    <!-- Campo de entrada: Nombre del Viaje -->
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/textImputNombre"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:hint="@string/nombre_del_viaje"
+        android:backgroundTint="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/texNuevoViaje" />
+
+    <!-- Campo de entrada: Duración del Viaje -->
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/textImputDuracion"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:hint="@string/duracion_del_viaje"
+        android:backgroundTint="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textImputNombre" />
+
+    <!-- Botón: Agregar Fotos -->
+    <Button
+        android:id="@+id/btnAgregarFotos"
+        style="@style/RoundedButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/agregar_imagenes"
+        android:layout_marginTop="22dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textImputDuracion" />
+
+    <!-- Botón: Agregar Videos -->
+    <Button
+        android:id="@+id/btnAgregarVideos"
+        style="@style/RoundedButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/agregar_videos"
+        android:layout_marginTop="22dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnAgregarFotos" />
+
+    <!-- Botón: Agregar Audios -->
+    <Button
+        android:id="@+id/btnAgregarAudios"
+        style="@style/RoundedButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/agregar_audios"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnAgregarVideos" />
+
+    <!-- Botón: Guardar -->
+    <Button
+        android:id="@+id/btnGuardar"
+        style="@style/RoundedButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/guardar"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="42dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnAgregarAudios"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
