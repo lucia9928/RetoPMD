@@ -1,18 +1,22 @@
-package com.example.myaplicaciondeviajes.model;
+package model;
 
 public class Viaje {
+
+
+    private long id;
     private String nombre;
     private String duracion;
-    private long idViaje;
-    // Constructor
 
+    public Viaje(String nombre, String duracion) {
 
-    public Viaje(long id, String nombre, String duracion) {
-        this.idViaje=id;
         this.nombre=nombre;
         this.duracion=duracion;
     }
-
+    public Viaje( long id, String nombre, String duracion) {
+        this.id=id;
+        this.nombre=nombre;
+        this.duracion=duracion;
+    }
 
     // Getters y Setters
     public String getNombre() { return nombre; }
@@ -20,7 +24,13 @@ public class Viaje {
     public void setDuracion(String duracion) {
         this.duracion = duracion;
     }
+    public long getId() {
+        return id;
+    }
 
+    public void setId(long id) {
+        this.id = id;
+    }
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -32,12 +42,6 @@ public class Viaje {
                 ", duracion='" + duracion + '\'' +
                 '}';
     }
-    public long getIdViaje() {
-        return idViaje;
-    }
 
-    public void setIdViaje(long idViaje) {
-        this.idViaje = idViaje;
-    }
 }
 

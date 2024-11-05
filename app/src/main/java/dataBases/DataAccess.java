@@ -1,4 +1,4 @@
-package com.example.myaplicaciondeviajes.dataBases;
+package dataBases;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -11,7 +11,7 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.myaplicaciondeviajes.model.Viaje;
+import model.Viaje;
 
 public class DataAccess {
     private static final String DATABASE_NAME = "viajes.db";
@@ -61,33 +61,39 @@ public class DataAccess {
     }
 
     // Inserta un nuevo viaje en la base de datos
-    public void insertViaje(long id, String nombre, String duracion) {
+    public long insertViaje(String nombre, String duracion) {
         ContentValues values = new ContentValues();
-        Cursor select =database.rawQuery("select * from sqlite_sequence", null);
-        id=Long.parseLong(select.toString());
-        values.put("id", id);;
         values.put("nombre", nombre);
         values.put("duracion", duracion);
-        // Insertar el nuevo registro y obtener el ID autogenerado
-        database.execSQL("INSERT INTO TABLE_VIAJES VALUES (?,?,?)");
 
-        // Verificar si se generó un ID válido
-       if (id == -1) {
+        // Insertar en la base de datos y devolver el ID autogenerado
+        long viajeId = database.insert("viajes", null, values);
+        if (viajeId == -1) {
             Log.e("DataAccess", "Error al insertar el viaje.");
         } else {
-            Log.d("DataAccess", "Viaje insertado con ID: " + id);
+            Log.d("DataAccess", "Viaje insertado con ID: " + viajeId);
         }
 
+        return viajeId;  // Devuelve el ID del viaje recién creado
     }
 
     // Inserta un archivo asociado a un viaje
+    // Inserta un archivo asociado a un viaje
     public long insertArchivo(long viajeId, String tipo, String ruta) {
         ContentValues values = new ContentValues();
-        values.put("viajeId", viajeId);
+        values.put("viaje_id", viajeId);
         values.put("tipo", tipo);
         values.put("ruta", ruta);
 
-        return database.insert(TABLE_ARCHIVOS, null, values);
+        // Insertar el archivo en la tabla de archivos
+        long archivoId = database.insert("archivos", null, values);
+
+        if (archivoId == -1) {
+            Log.e("DataAccess", "Error al insertar el archivo.");
+        } else {
+            Log.d("DataAccess", "Archivo insertado con ID: " + archivoId);
+        }
+        return archivoId; // Corregido
     }
 
     // Obtiene todos los viajes de la base de datos
@@ -107,7 +113,7 @@ public class DataAccess {
                     String nombre = cursor.getString(cursor.getColumnIndexOrThrow("nombre"));
                     String duracion = cursor.getString(cursor.getColumnIndexOrThrow("duracion"));
                     if (nombre != null && duracion != null) {
-                        Viaje viaje = new Viaje(id,nombre, duracion);
+                        Viaje viaje = new Viaje(nombre, duracion);
                         viajes.add(viaje);
                     } else {
                         Log.d("DataAcces", "Viaje omitido por tener campos nulos");
@@ -126,6 +132,45 @@ public class DataAccess {
         }
         return viajes;
     }
+    // Método para eliminar un viaje por nombre
+    public boolean deleteViajeByName(String nombreViaje) {
+        int rowsAffected = database.delete(TABLE_VIAJES, "nombre = ?", new String[]{nombreViaje});
+        if (rowsAffected > 0) {
+            Log.d("DataAccess", "Viaje eliminado: " + nombreViaje);
+            return true;
+        } else {
+            Log.e("DataAccess", "Error al eliminar el viaje: " + nombreViaje);
+            return false;
+        }
+    }
+    public Viaje getViajeById(long id) {
+        Viaje viaje = null;
+        Cursor cursor = null;
 
+        try {
+            // Consulta SQL para obtener el viaje por ID
+            String sql = "SELECT nombre, duracion FROM " + TABLE_VIAJES + " WHERE id = ?";
+            cursor = database.rawQuery(sql, new String[]{String.valueOf(id)});
+
+            // Si encontramos el viaje, extraemos sus datos
+            if (cursor != null && cursor.moveToFirst()) {
+                String nombre = cursor.getString(cursor.getColumnIndexOrThrow("nombre"));
+                String duracion = cursor.getString(cursor.getColumnIndexOrThrow("duracion"));
+
+                // Crear el objeto Viaje con los datos obtenidos
+                viaje = new Viaje(id, nombre, duracion);
+            } else {
+                Log.d("DataAccess", "No se encontró un viaje con ID: " + id);
+            }
+        } catch (SQLiteException e) {
+            Log.e("DataAccess", "Error al obtener el viaje con ID: " + id, e);
+        } finally {
+            if (cursor != null) {
+                cursor.close(); // Asegurarse de cerrar el cursor
+            }
+        }
+
+        return viaje; // Retorna el viaje o null si no se encontró
+    }
 }
 

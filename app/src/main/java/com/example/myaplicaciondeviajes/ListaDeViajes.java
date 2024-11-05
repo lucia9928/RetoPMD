@@ -1,23 +1,34 @@
 package com.example.myaplicaciondeviajes;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.Toast;
 
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-import com.example.myaplicaciondeviajes.dataBases.DataAccess;
-import com.example.myaplicaciondeviajes.model.Viaje;
+import dataBases.DataAccess;
+import model.Viaje;
 
 public class ListaDeViajes extends AppCompatActivity {
 
     private Spinner viajesSpinner;
     private DataAccess data;
-
+    private ImageButton eliminarButton;
+    private Button detallesButon;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,12 +36,27 @@ public class ListaDeViajes extends AppCompatActivity {
 
         // Inicializar el Spinner
         viajesSpinner = findViewById(R.id.spinner);
-
+        eliminarButton = findViewById(R.id.deleteButton);
+        detallesButon=findViewById(R.id.detallesButon);
         // Inicializar el acceso a datos
         data = new DataAccess(this);
 
         // Cargar los viajes en el Spinner
         loadViajesIntoSpinner();
+        // Configurar el botón de eliminación
+        eliminarButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                eliminarViajeSeleccionado();
+            }
+        });
+        detallesButon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent detalleIntent= new Intent(ListaDeViajes.this, DetallesViajes.class);
+                startActivity(detalleIntent);
+            }
+        });
     }
     private void loadViajesIntoSpinner() {
         List<Viaje> viajes = data.getAllViajes();
@@ -55,6 +81,26 @@ public class ListaDeViajes extends AppCompatActivity {
             // Asignar el adaptador al Spinner
             viajesSpinner.setAdapter(adapter);
         }
+    }
+    private void eliminarViajeSeleccionado() {
+        String nombreViajeSeleccionado = (String) viajesSpinner.getSelectedItem();
+
+        if (nombreViajeSeleccionado == null || nombreViajeSeleccionado.equals("No hay viajes disponibles")) {
+            Toast.makeText(this, "No hay viajes para eliminar", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Eliminar el viaje seleccionado usando DataAccess
+        boolean eliminado = data.deleteViajeByName(nombreViajeSeleccionado);
+
+        if (eliminado) {
+            Toast.makeText(this, "Viaje eliminado exitosamente", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Error al eliminar el viaje", Toast.LENGTH_SHORT).show();
+        }
+
+        // Recargar el Spinner para reflejar los cambios
+        loadViajesIntoSpinner();
     }
 
     @Override

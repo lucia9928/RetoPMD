@@ -53,7 +53,7 @@
         android:layout_marginEnd="16dp"
         android:background="@drawable/rounded_button"
         android:fontFamily="sans-serif-medium"
-        android:text="@string/detalles_de_los_viajes"
+        android:text="@string/lista_de_viajes"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"

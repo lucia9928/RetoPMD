@@ -22,7 +22,7 @@
 
     <!-- Campo de texto: Nombre -->
     <AutoCompleteTextView
-        android:id="@+id/autoCompleteTextView"
+        android:id="@+id/autoComTexNombre"
         android:layout_width="0dp"
         android:layout_height="56dp"
         android:layout_marginTop="20dp"
@@ -38,7 +38,7 @@
 
     <!-- Campo de texto: Duración -->
     <AutoCompleteTextView
-        android:id="@+id/autoCompleteTextView2"
+        android:id="@+id/autoComTextDuracion"
         android:layout_width="0dp"
         android:layout_height="56dp"
         android:layout_marginTop="16dp"
@@ -50,7 +50,7 @@
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/autoComTexNombre" />
 
     <!-- Botón: Imágenes -->
     <Button
@@ -62,7 +62,7 @@
         android:layout_marginTop="24dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextView2" />
+        app:layout_constraintTop_toBottomOf="@+id/autoComTextDuracion" />
 
     <!-- Botón: Videos -->
     <Button

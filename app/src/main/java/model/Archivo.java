@@ -1,7 +1,6 @@
-package com.example.myaplicaciondeviajes.model;
+package model;
 
 public class Archivo {
-    private long id;
     private long viajeId;
     private String tipo;
     private String ruta;
@@ -9,12 +8,6 @@ public class Archivo {
         this.viajeId = viajeId;
         this.tipo = tipo;
         this.ruta = ruta;
-    }
-    public long getId() {
-        return id;
-    }
-    public void setId(long id) {
-        this.id = id;
     }
     public long getViajeId() {
         return viajeId;
