@@ -34,7 +34,6 @@ public class DetallesViajes extends AppCompatActivity {
             cargarDatosDelViaje(viajeId);
         }
     }
-
     private void cargarDatosDelViaje(long viajeId) {
         try {
             Viaje viaje = dataAccess.getViajeById(viajeId);
@@ -44,6 +43,7 @@ public class DetallesViajes extends AppCompatActivity {
             } else {
                 Toast.makeText(this, "No se encontró el viaje", Toast.LENGTH_SHORT).show();
             }
+
         } catch (Exception e) {
             Log.e("DetallesViajes", "Error al cargar datos del viaje", e);
             Toast.makeText(this, "Error al cargar datos del viaje", Toast.LENGTH_SHORT).show();

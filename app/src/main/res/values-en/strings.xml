@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MyAplicacionDeViajes</string>
+    <string name="viajes">Trips</string>
+    <string name="crear_nuevo_viaje">Create new Trip</string>
+    <string name="detalles_de_los_viajes">Trip details</string>
+    <string name="duracion_del_viaje">Trip duration</string>
+    <string name="nombre_del_viaje">Trip name</string>
+    <string name="crear_nuevo_viaje2">Create new Trip</string>
+    <string name="guardar">Keep</string>
+    <string name="agregar_audios">Add recording</string>
+    <string name="agregar_videos">Add videos</string>
+    <string name="agregar_imagenes">Add Images</string>
+    <string name="audios">Recording</string>
+    <string name="videos">Videos</string>
+    <string name="atras">Back</string>
+    <string name="imgenes">Images</string>
+    <string name="titulo">Trip details</string>
+    <string name="nombre">Trip name</string>
+    <string name="duracion">Trip duration</string>
+    <string name="lista_de_viajes">Travel List</string>
+    <string name="delete_trip">delete_trip</string>
+    <string name="detalles_del_viaje">Trip details</string>
+</resources>
