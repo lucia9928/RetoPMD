@@ -1,6 +1,8 @@
 package model;
 
-public class Archivo {
+import java.io.Serializable;
+
+public class Archivo implements Serializable {
     private long viajeId;
     private String tipo;
     private String ruta;
