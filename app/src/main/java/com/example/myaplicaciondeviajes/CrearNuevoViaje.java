@@ -293,12 +293,9 @@ public class CrearNuevoViaje extends AppCompatActivity implements View.OnClickLi
     }
 
 
-@Override
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         dataAccess.close(); // Cerrar la base de datos al destruir la actividad
     }
 }
-
-
-
