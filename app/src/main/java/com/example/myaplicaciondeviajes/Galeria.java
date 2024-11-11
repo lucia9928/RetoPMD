@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,12 +21,19 @@ public class Galeria extends AppCompatActivity {
         setContentView(R.layout.activity_galeria);
 
         ImageView imageView = findViewById(R.id.imageView);
+        VideoView videoView=findViewById(R.id.videoView);
 
         // Obtiene el objeto Archivo del Intent y verifica si es nulo
         Archivo archivo = (Archivo) getIntent().getSerializableExtra("objeto");
         if (archivo != null) {
-            String imagen = archivo.getRuta();
-            cargarImagen(imagen, imageView);
+            if(archivo.getTipo().equals("imagen")){
+                String imagen = archivo.getRuta();
+                cargarImagen(imagen, imageView);
+            }else if(archivo.getTipo().equals("video")){
+                String video = archivo.getRuta();
+                cargarVideo(video, videoView);
+            }
+
         } else {
             // Muestra un mensaje si no se recibió el objeto
             Toast.makeText(this, "No se pudo cargar la imagen", Toast.LENGTH_SHORT).show();
@@ -50,6 +58,22 @@ public class Galeria extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
             Toast.makeText(this, "Error al cargar la imagen", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    // Método para cargar el video en un VideoView
+    private void cargarVideo(String video, VideoView videoView) {
+        try {
+            File videoFile = new File(video);
+            if (videoFile.exists()) {
+                videoView.setVideoPath(videoFile.getAbsolutePath());
+                videoView.start(); // Inicia la reproducción del video
+            } else {
+                Toast.makeText(this, "Archivo de video no encontrado", Toast.LENGTH_SHORT).show();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Error al cargar el video", Toast.LENGTH_SHORT).show();
         }
     }
 }
