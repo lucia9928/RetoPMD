@@ -29,6 +29,7 @@ public class ListaDeViajes extends AppCompatActivity {
     private DataAccess data;
     private ImageButton eliminarButton;
     private Button detallesButon;
+    private long id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +55,12 @@ public class ListaDeViajes extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent detalleIntent= new Intent(ListaDeViajes.this, DetallesViajes.class);
+                String nombreViaje = viajesSpinner.getSelectedItem().toString();
+                long id=data.recuperarIdViajePorNombre(nombreViaje);
+
+
+                detalleIntent.putExtra("viajeId",id);
+
                 startActivity(detalleIntent);
             }
         });
@@ -66,6 +73,7 @@ public class ListaDeViajes extends AppCompatActivity {
         for (Viaje viaje : viajes) {
             if (viaje != null) { // Verificar que el objeto y el nombre no sean nulos
                 viajeNombres.add(viaje.getNombre());
+
             } else {
                 Log.d("ListaDeViajes", "Viaje o nombre de viaje es null");
             }

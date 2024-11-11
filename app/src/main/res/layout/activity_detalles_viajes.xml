@@ -21,50 +21,56 @@
         android:layout_marginTop="32dp" />
 
     <!-- Campo de texto: Nombre -->
-    <AutoCompleteTextView
-        android:id="@+id/autoComTexNombre"
-        android:layout_width="0dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:hint="@string/nombre"
-        android:backgroundTint="#FFFFFF"
-        android:textColorHint="#FFFFFF"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <!-- Campo de texto: Duración -->
-    <AutoCompleteTextView
-        android:id="@+id/autoComTextDuracion"
-        android:layout_width="0dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:hint="@string/duracion"
-        android:backgroundTint="#FFFFFF"
-        android:textColorHint="#FFFFFF"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/autoComTexNombre" />
 
     <!-- Botón: Imágenes -->
+
+    <!-- Botón: Videos -->
+    <TextView
+        android:id="@+id/textNombre"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="104dp"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="#FFFFFF"
+        android:hint="@string/nombre"
+        android:textColorHint="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textDuracion"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="#FFFFFF"
+        android:hint="@string/duracion"
+        android:textColorHint="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textNombre" />
+
     <Button
         android:id="@+id/btnImagenes"
         style="@style/RoundedButtonStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/imgenes"
         android:layout_marginTop="24dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/imgenes"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/autoComTextDuracion" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textDuracion" />
 
-    <!-- Botón: Videos -->
     <Button
         android:id="@+id/btnVideos"
         style="@style/RoundedButtonStyle"

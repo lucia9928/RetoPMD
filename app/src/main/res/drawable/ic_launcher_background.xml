@@ -168,15 +168,5 @@
         android:pathData="M79,19L79,89"
         android:strokeWidth="0.8"
         android:strokeColor="#33FFFFFF" />
-    <path>
-            <gradient
-                android:startY="-1"
-                android:startX="54"
-                android:endY="107"
-                android:endX="54"
-                android:type="linear">
-                <item android:offset="0" android:color="#FF1E88E5"/>
-                <item android:offset="1" android:color="#FF1565C0"/>
-            </gradient>
-    </path>
+
 </vector>

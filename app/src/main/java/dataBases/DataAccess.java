@@ -11,6 +11,7 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Archivo;
 import model.Viaje;
 
 public class DataAccess {
@@ -112,9 +113,11 @@ public class DataAccess {
                     long id=cursor.getLong(cursor.getColumnIndexOrThrow("id"));
                     String nombre = cursor.getString(cursor.getColumnIndexOrThrow("nombre"));
                     String duracion = cursor.getString(cursor.getColumnIndexOrThrow("duracion"));
+                    Log.e("asd", nombre);
                     if (nombre != null && duracion != null) {
-                        Viaje viaje = new Viaje(nombre, duracion);
+                        Viaje viaje = new Viaje(id, nombre, duracion);
                         viajes.add(viaje);
+
                     } else {
                         Log.d("DataAcces", "Viaje omitido por tener campos nulos");
                     }
@@ -171,6 +174,66 @@ public class DataAccess {
         }
 
         return viaje; // Retorna el viaje o null si no se encontró
+    }
+
+    public Archivo recuperarArchivo(long id) {
+        Archivo archivo = null;
+        Cursor cursor = null;
+
+        try {
+            // Consulta SQL con marcador de posición
+            String sql = "SELECT viajeId, tipo, ruta FROM " + TABLE_VIAJES + " WHERE viajeId = ?";
+
+            // Ejecuta la consulta pasando el ID como parámetro
+            cursor = database.rawQuery(sql, new String[]{String.valueOf(id)});
+
+            // Verifica si el cursor tiene resultados y obtén los datos
+            if (cursor != null && cursor.moveToFirst()) {
+                long viajeID = cursor.getLong(cursor.getColumnIndexOrThrow("viajeId"));
+                String tipo = cursor.getString(cursor.getColumnIndexOrThrow("tipo"));
+                String ruta = cursor.getString(cursor.getColumnIndexOrThrow("ruta"));
+
+                // Crear el objeto Archivo con los datos obtenidos
+                archivo = new Archivo(viajeID, tipo, ruta);
+            }
+        } catch (SQLiteException e) {
+            Log.e("DataAccess", "Error al obtener el archivo: ", e);
+        } finally {
+            // Asegúrate de cerrar el cursor para liberar los recursos
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+
+        return archivo;
+    }
+
+
+    public long recuperarIdViajePorNombre(String nombre) {
+        long viajeID = -1;  // Asigna un valor por defecto si no se encuentra el viaje
+        Cursor cursor = null;
+
+        try {
+            // Usa un marcador de posición para el valor de nombre
+            String sql = "SELECT id, nombre, duracion FROM " + TABLE_VIAJES + " WHERE nombre = ?";
+
+            // Ejecuta la consulta pasando el parámetro
+            cursor = database.rawQuery(sql, new String[]{nombre});
+
+            // Verifica si el cursor tiene resultados y obtén el ID
+            if (cursor != null && cursor.moveToFirst()) {
+                viajeID = cursor.getLong(cursor.getColumnIndexOrThrow("id"));
+            }
+        } catch (SQLiteException e) {
+            Log.d("DataAccess", "No se encontró un viaje con nombre: " + nombre, e);
+        } finally {
+            // Asegúrate de cerrar el cursor para liberar los recursos
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+
+        return viajeID;  // Devuelve el ID encontrado o -1 si no se encontró
     }
 }
 
